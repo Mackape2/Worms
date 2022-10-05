@@ -1,4 +1,4 @@
-using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,12 +21,9 @@ public class PlayerController : MonoBehaviour
     //Movement
     public Vector2 movementInput;
     public float speed = 5f;
+
+    public bool isActivePlayer;
     
-    //Sus mechanics
-    public Transform HatSpawnpos;
-    
-    //Hat Collection
-    public GameObject hat;
     
     private void Awake()
     {
@@ -36,12 +33,11 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         move = controls.Player.Movement; 
-        interact = controls.Player.Interact;
+       
         
         move.Enable();
         move.performed += OnMove;
-        interact.Enable();
-        interact.performed += OnInteract;
+
     }
     
     private void OnDisable()
@@ -55,37 +51,18 @@ public class PlayerController : MonoBehaviour
         movementInput = obj.ReadValue<Vector2>();
 
     }
-    private void OnInteract(InputAction.CallbackContext obj)
-    {
-        Disguise();
-    }
-    private void Disguise()
-    {
-        CreateHat(HatType.simpleCap);
-        Debug.Log($"disguising{movementInput.x}");
-    }
-
-    public void CreateHat(HatType type)
-    {
-        Instantiate(hat, HatSpawnpos);
-    }
     
     private void FixedUpdate()
     {
         movement = new Vector3((movementInput.x), 0, (movementInput.y)).normalized;
         //Making the Player look forward
 
+        if (movement != Vector3.zero)
+            gameObject.transform.forward = movement;
         //Have to implement the gravity in code because the character controller collides with the rigidbody
         if (!characterController.isGrounded)
             movement.y = -1;
         if(!characterController.enabled == false)        
             characterController.Move(movement * (Time.fixedDeltaTime * speed));
     }
-    
-    public enum HatType
-    {
-        simpleCap,
-        officersCap
-    }
-    
 }
