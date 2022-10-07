@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Script.GunSystem;
 using UnityEngine;
 
 public class GunSelection : MonoBehaviour
@@ -17,7 +18,8 @@ public class GunSelection : MonoBehaviour
         sniper.SetActive(false);
         weapon.SetActive(false);
     }
-
+    
+    
     // Update is called once per frame
     void Update()
     {
@@ -27,6 +29,7 @@ public class GunSelection : MonoBehaviour
             {
                 sniper.SetActive(false);
                 weapon.SetActive(true);
+
             }
         }
 
@@ -36,6 +39,8 @@ public class GunSelection : MonoBehaviour
             {
                 weapon.SetActive(false);
                 sniper.SetActive(true);
+                
+                
             }
         }
     }

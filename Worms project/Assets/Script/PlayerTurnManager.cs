@@ -27,8 +27,8 @@ namespace Script
             players = Menu.survivors;
             currentPlayer = 0;
             activePlayer = Team.Player1[0].gameObject;
-            activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
-            newCamera = Team.Player1[0].transform.GetChild(1).gameObject;
+            activePlayer.GetComponentInChildren<PlayerController>().isActivePlayer = true;
+            newCamera = activePlayer.transform.GetChild(1).gameObject;
             currentCamera = newCamera;
         
         }
@@ -38,17 +38,25 @@ namespace Script
         {
             if (Input.GetKeyDown(KeyCode.RightShift))
             {
-                //If the newCamera doesn't update during the loop, it will repeat.
-                while (currentCamera == newCamera)
-                { 
-                    //Turns off the activePlayer bool to be able to reactive it on a new gameobject
+                ChangeTurn();
+            }
+            
+        }
+
+        public void ChangeTurn()
+        {
+            //If the newCamera doesn't update during the loop, it will repeat.
+                turnTotal += 1;
+                    //Turns the active player back into a regular object
                     activePlayer.GetComponent<PlayerController>().isActivePlayer = false;
+                    activePlayer.GetComponent<PlayerController>().enabled = false;
+
+                    //Un-equips any weapon currently held by the player when the turn is done
+                    activePlayer.transform.GetChild(2).GetChild(0).gameObject.SetActive(false);
+                    activePlayer.transform.GetChild(2).GetChild(1).gameObject.SetActive(false);
+                    while (currentCamera == newCamera)
+                    { 
                     
-                    //Unequip any weapon currently held by the player when the turn is done
-                    activePlayer.transform.GetChild(2).gameObject.SetActive(false);
-                    activePlayer.transform.GetChild(3).gameObject.SetActive(false);
-                    
-                    turnTotal += 1;
                     currentTeam += 1;
                     
                     //If all teams have played, the loop gets reset, but makes the next player in the teams playable
@@ -68,66 +76,70 @@ namespace Script
                     //Picks from the list that belongs to the current team of players
                     switch (currentTeam)
                     {
-                        case 0:
+                        case 0: 
+                            //Makes active player into a usable variable that drastically shortens the code
+                            activePlayer = Team.Player1[currentPlayer].gameObject;
+                            
                             //Checks if the picked player is currently alive. If it is dead, the newCamera object
                             //will not update and the loop will repeat.
                             playerIsAlive = Team.Player1[currentPlayer].GetComponent<PlayerController>().isAlive;
                             if (playerIsAlive)
                             {
-                                //If the player is alive, the affected components are activated
-                                activePlayer = Team.Player1[currentPlayer].gameObject;
-                                
                                 //The camera is updated, causing the loop to end
-                                newCamera = activePlayer.transform.GetChild(1).gameObject;
-                                
-                                //activePlayer sets to true so the gameobject can equip guns
-                                activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
-                                
-                                //The same happens in the other cases too
+                                newCamera = activePlayer.transform.GetChild(1).gameObject; 
+                                //The same process happens in the other cases too
                             }
-                            
                             break;
+                        
+                        
                         case 1:
-                            playerIsAlive = Team.Player2[currentPlayer].GetComponent<PlayerController>().isAlive;
+                            activePlayer = Team.Player2[currentPlayer].gameObject;
+                            playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
                             if (playerIsAlive)
                             {
-                                activePlayer = Team.Player2[currentPlayer].gameObject;
                                 newCamera = activePlayer.transform.GetChild(1).gameObject;
-                                activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
                             }
+                            
                             
                             break;
                         case 2:
-                            playerIsAlive = Team.Player3[currentPlayer].GetComponent<PlayerController>().isAlive;
+                            activePlayer = Team.Player3[currentPlayer].gameObject;
+                            playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
                             if (playerIsAlive)
                             {
-                                activePlayer = Team.Player3[currentPlayer].gameObject;
                                 newCamera = activePlayer.transform.GetChild(1).gameObject;
-                                activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
                             }
                             break;
+                        
+                        
                         case 3:
-                            
-                            playerIsAlive = Team.Player4[currentPlayer].GetComponent<PlayerController>().isAlive;
+                            activePlayer = Team.Player4[currentPlayer].gameObject;
+                            playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
                             if (playerIsAlive)
                             {
-                                activePlayer = Team.Player4[currentPlayer].gameObject;
+                                
                                 newCamera = activePlayer.transform.GetChild(1).gameObject;
-                                activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
                             }
                             break;
-           
                     }
+                    
+                    
                     //The new camera will only activate when the correct camera has been selected
                     if (currentCamera != newCamera)
-                    { 
+                    {
+                        //activates the new camera before deactivating the current camera so it doesn't crash
                         newCamera.SetActive(true); 
                         currentCamera.SetActive(false);
+                        
+                        //activates the player controller so that the character can move
+                        activePlayer.GetComponent<PlayerController>().enabled = true;
+                        
+                        //isActivePlayer sets to true so the game object can equip guns
+                        activePlayer.GetComponent<PlayerController>().isActivePlayer = true;
                     } 
                 }
-                // Updates current camera to the new camera so that the previous loop can activate again
-                currentCamera = newCamera;
-            }
+                    // Updates current camera to the new camera so that the previous loop can activate again
+                    currentCamera = newCamera;
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Script
             if (health <= 0)
             {
                 playerController.isAlive = false;
+                this.gameObject.GetComponent<MeshRenderer>().material.color = Color.gray;
             }
         }
     }
