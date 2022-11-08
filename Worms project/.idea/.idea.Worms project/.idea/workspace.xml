@@ -21,6 +21,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Script/Turn Timer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../unity projects/My project (1)/Assets/Scripts/Movement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../unity projects/My project (1)/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Perforce/Max_Palsson_GP1/FG22FT_GP1_North_Team01/GP1_Team1/Assets/Scripts/water.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,6 +100,11 @@
       <workItem from="1665045844955" duration="35889000" />
       <workItem from="1665135121620" duration="9533000" />
       <workItem from="1665147084636" duration="17799000" />
+      <workItem from="1665409709253" duration="1357000" />
+      <workItem from="1665480028002" duration="2770000" />
+      <workItem from="1665566978476" duration="1596000" />
+      <workItem from="1665660222511" duration="5054000" />
+      <workItem from="1665668850071" duration="1087000" />
     </task>
     <servers />
   </component>
