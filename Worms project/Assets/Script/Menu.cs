@@ -3,9 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
-{ 
-    //GameObject prep = GameObject.Find("prepScreen");  
-    
+{
     public TMP_Dropdown dropDownSurvivors;
     public TMP_Dropdown dropDownTeams;
     public static int survivors;

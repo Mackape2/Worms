@@ -1,6 +1,7 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 namespace Script
 {
@@ -17,6 +18,10 @@ namespace Script
         private bool _playerIsAlive = true;
         private int _aliveTeams;
 
+        int test;
+        int test2;
+        int test3;
+        int test4;
         // Start is called before the first frame update
 
 
@@ -46,11 +51,34 @@ namespace Script
 
         public void ChangeTurn()
         {
-            if (_aliveTeams <= 1)
-            {
-
-                
-            }
+            if (Team.Player1Alive > 0)
+                test = 1;
+            else
+                test = 0;
+            if (Team.Player2Alive > 0)
+                test2 = 1;
+            else
+                test2 = 0;
+            if (Team.Player3Alive > 0)
+                test3 = 1;
+            else
+                test3 = 0;
+            if (Team.Player4Alive > 0)
+                test4 = 1;
+            else
+                test4 = 0;
+            Debug.Log(test);
+            Debug.Log(test2);
+            Debug.Log(test3);
+            Debug.Log(test4);
+            
+                //_playerIsAlive ? 1 : 0;
+                if ((test + test2 + test3 + test4) <= 1)
+                {
+                SceneManager.LoadScene("Main menu");
+                return;
+                }
+            
             //If the newCamera doesn't update during the loop, it will repeat.
             
                     //Turns the active player back into a regular object
@@ -83,43 +111,26 @@ namespace Script
                     case 0: 
                         //Makes active player into a usable variable that drastically shortens the code
                         activePlayer = Team.Player1[_currentPlayer].gameObject;
-                                
-                        //Checks if the picked player is currently alive. If it is dead, the newCamera object
-                        //will not update and the loop will repeat.
-                        _playerIsAlive = Team.Player1[_currentPlayer].GetComponent<PlayerController>().isAlive;
-                        if (_playerIsAlive)
-                            //The camera is updated, causing the loop to end
-                            newCamera = activePlayer.transform.GetChild(1).gameObject; 
-                            //The same process happens in the other cases too
-                            break;
-                            
-                            
+                        break;
+                    
                     case 1:
                         activePlayer = Team.Player2[_currentPlayer].gameObject;
-                        _playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
-                        if (_playerIsAlive)
-                            newCamera = activePlayer.transform.GetChild(1).gameObject;
-
                         break;
                     
                     case 2:
                         activePlayer = Team.Player3[_currentPlayer].gameObject;
-                        _playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
-                        if (_playerIsAlive)
-                            newCamera = activePlayer.transform.GetChild(1).gameObject;
-                        
                         break;
                     
-                            
                     case 3:
                         activePlayer = Team.Player4[_currentPlayer].gameObject;
-                        _playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
-                        if (_playerIsAlive)
-                            newCamera = activePlayer.transform.GetChild(1).gameObject;
-                        
                         break;
                         }
-                        
+                        //Checks if the picked player is currently alive. If it is dead, the newCamera object
+                        //will not update and the loop will repeat.
+                        _playerIsAlive = activePlayer.GetComponent<PlayerController>().isAlive;
+                        if (_playerIsAlive)
+                            //The camera is updated, causing the loop to end
+                            newCamera = activePlayer.transform.GetChild(1).gameObject;
                         
                 //The new camera will only activate when the correct camera has been selected
                 if (currentCamera != newCamera)
