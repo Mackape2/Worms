@@ -14,11 +14,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Script/Gravity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/PlayerTurnManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/Team.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Script/Turn Timer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../unity projects/My project (1)/Assets/Scripts/Movement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../unity projects/My project (1)/Assets/Scripts/PlayerController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Perforce/Max_Palsson_GP1/FG22FT_GP1_North_Team01/GP1_Team1/Assets/Scripts/water.cs" root0="SKIP_HIGHLIGHTING" />
@@ -105,6 +100,8 @@
       <workItem from="1665566978476" duration="1596000" />
       <workItem from="1665660222511" duration="5054000" />
       <workItem from="1665668850071" duration="1087000" />
+      <workItem from="1668079486789" duration="2088000" />
+      <workItem from="1668591419177" duration="11420000" />
     </task>
     <servers />
   </component>

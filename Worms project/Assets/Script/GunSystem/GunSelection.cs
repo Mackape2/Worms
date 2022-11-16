@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Script.GunSystem;
 using UnityEngine;
 
 public class GunSelection : MonoBehaviour
@@ -11,8 +8,7 @@ public class GunSelection : MonoBehaviour
     public Transform gunPosition;
     public GameObject sniper;
     
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         sniper.SetActive(false);
@@ -20,7 +16,6 @@ public class GunSelection : MonoBehaviour
     }
     
     
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))

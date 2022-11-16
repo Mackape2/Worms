@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,8 +5,8 @@ namespace Script
 {
     public class Spawning : MonoBehaviour
     {
-        public GameObject playerObject;
-        public GameObject MainCam;
+        [SerializeField]private GameObject playerObject;
+        [SerializeField]private GameObject MainCam;
         public float area;
         void Awake()
         {
@@ -58,6 +57,7 @@ namespace Script
                             playerModel.name = "Team" + (i+1) + " Player" + (teamTracker + 1);
                             //Places the object into the assigned player list
                             Team.Player1[teamTracker] = playerModel.gameObject;
+                            Team.Player1Alive += 1;
                             //Changes the color of the team 
                             playerModel.GetComponent<MeshRenderer>().material.color = Color.red;
                             break;
@@ -66,6 +66,7 @@ namespace Script
                         case 1:
                             playerModel.name = "Team" + (i+1) + " Player" + (teamTracker+ 1);
                             Team.Player2[teamTracker] = playerModel.gameObject;
+                            Team.Player2Alive += 1;
                             playerModel.GetComponent<MeshRenderer>().material.color = Color.blue;
                             break;
                         
@@ -73,6 +74,7 @@ namespace Script
                         case 2:
                             playerModel.name = "Team" + (i+1) + " Player" + (teamTracker+ 1);
                             Team.Player3[teamTracker] = playerModel.gameObject;
+                            Team.Player3Alive += 1;
                             playerModel.GetComponent<MeshRenderer>().material.color = Color.black;
                             break;
                         
@@ -80,6 +82,7 @@ namespace Script
                         case 3:
                             playerModel.name = "Team" + (i+1) + " Player" + (teamTracker + 1);
                             Team.Player4[teamTracker] = playerModel.gameObject;
+                            Team.Player4Alive += 1;
                             playerModel.GetComponent<MeshRenderer>().material.color = Color.yellow;
                             break;
                     }

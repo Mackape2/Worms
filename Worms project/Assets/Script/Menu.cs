@@ -14,8 +14,8 @@ public class Menu : MonoBehaviour
     public void BeginButton()
    {
          survivors = dropDownSurvivors.value + 1;
-         teams = dropDownTeams.value + 1;
+         teams = dropDownTeams.value + 2;
 
-         SceneManager.LoadScene("SampleScene");
+         SceneManager.LoadScene("GameWorld");
    }
 }

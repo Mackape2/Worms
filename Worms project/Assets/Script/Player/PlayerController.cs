@@ -31,9 +31,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public float rotationSpeed = 10f;
     
-    
-    
-    
     private void Awake()
     {
         controls = new PlayerInput();
@@ -63,8 +60,7 @@ public class PlayerController : MonoBehaviour
         movementInput = obj.ReadValue<Vector2>();
 
     }
-
-
+    
     private void SetDirection()
     {
         //Figure out forward vector from camera to player
@@ -80,8 +76,6 @@ public class PlayerController : MonoBehaviour
             
     }
     
-
-
     private void SetVelocity()
     {
         Vector3 newMovement = moveDirection.normalized * (speed  * Time.deltaTime);
@@ -89,7 +83,6 @@ public class PlayerController : MonoBehaviour
         
         rb.velocity = newMovement;
     }
-
     private void Update()
     {
        
@@ -104,12 +97,8 @@ public class PlayerController : MonoBehaviour
         }
            
     }
-
     private void FixedUpdate()
     {
         SetVelocity();
     }
-    
-    
-    
 }

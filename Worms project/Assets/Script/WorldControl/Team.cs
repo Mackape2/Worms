@@ -11,4 +11,9 @@ public static class Team
     public static GameObject[] Player3 = new GameObject[4];
     
     public static GameObject[] Player4 = new GameObject[4];
+
+    public static int Player1Alive;
+    public static int Player2Alive;
+    public static int Player3Alive;
+    public static int Player4Alive;
 }
