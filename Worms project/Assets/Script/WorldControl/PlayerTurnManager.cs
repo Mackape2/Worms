@@ -67,12 +67,8 @@ namespace Script
                 test4 = 1;
             else
                 test4 = 0;
-            Debug.Log(test);
-            Debug.Log(test2);
-            Debug.Log(test3);
-            Debug.Log(test4);
-            
-                //_playerIsAlive ? 1 : 0;
+
+            //_playerIsAlive ? 1 : 0;
                 if ((test + test2 + test3 + test4) <= 1)
                 {
                 SceneManager.LoadScene("Main menu");

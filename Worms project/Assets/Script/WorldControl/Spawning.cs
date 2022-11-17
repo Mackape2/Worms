@@ -16,6 +16,10 @@ namespace Script
         }
         void Spawnobjects(float areasize, GameObject obj)
         {
+            Team.Player1Alive = 0;
+            Team.Player2Alive = 0;
+            Team.Player3Alive = 0;
+            Team.Player4Alive = 0;
         
             for (int i = 0; i < Menu.teams; i++)
             {
